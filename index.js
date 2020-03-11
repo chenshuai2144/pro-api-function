@@ -25,6 +25,6 @@ app.all('*', (req, res, next) => {
 
 app.use(matchMock);
 
-app.listen(80, () => {
+app.listen(process.env.PORT, () => {
   console.log('服务已启动');
 });
