@@ -1,9 +1,9 @@
 {
-  "name": "pro-ali",
+  "name": "pro-api",
   "version": "1.0.0",
   "description": "",
   "scripts": {
-    "start": "func start",
+    "start": "node index.js",
     "test": "echo \"No tests yet...\""
   },
   "devDependencies": {
