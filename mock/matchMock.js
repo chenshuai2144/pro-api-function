@@ -1,3 +1,5 @@
+/** @format */
+
 const pathToRegexp = require('path-to-regexp');
 const bodyParser = require('body-parser');
 
@@ -84,8 +86,9 @@ function matchMock(req) {
   // eslint-disable-next-line no-restricted-syntax
   for (const mock of mockData) {
     const { method, re, keys } = mock;
+    console.log(req);
     if (method === exceptMethod) {
-      const match = re.exec(req.path);
+      const match = re.exec(req.url);
       if (match) {
         const params = {};
 
