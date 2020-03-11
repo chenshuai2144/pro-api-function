@@ -2,7 +2,6 @@
 
 // [START functions import]
 const express = require('express');
-const serverLess = require('serverless-http');
 
 const matchMock = require('./mock/matchMock');
 
