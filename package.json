@@ -11,9 +11,11 @@
   },
   "dependencies": {
     "body-parser": "^1.19.0",
+    "cheerio": "^1.0.0-rc.3",
     "express": "^4.17.1",
     "mockjs": "^1.1.0",
     "moment": "^2.24.0",
+    "node-fetch": "^2.6.0",
     "path-to-regexp": "2.4.0"
   }
 }
