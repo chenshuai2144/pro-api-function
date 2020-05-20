@@ -65,7 +65,7 @@ app.get('/github/issues', async (req, res, next) => {
   res.json({
     data: data.map((item) => ({
       ...item,
-      labels: item.labels.map((tag) => ({ ...tag, color: getTag() })),
+      labels: item.labels.map((tag) => ({ ...tag, color: getTag() })).slice(0, 1),
       state: item.labels.find((tag) => tag.name.includes('Progress')) ? 'processing' : item.state,
     })),
     page: params.current,
