@@ -2,7 +2,7 @@
 
 // [START functions import]
 const express = require('express');
-
+const fetch = require('node-fetch');
 const matchMock = require('./mock/matchMock');
 const getAvatarList = require('./getAvatarList');
 
@@ -39,6 +39,33 @@ app.get('/doc/getAvatarList', async (req, res, next) => {
       error: "'Please pass a name on the query string or in the request body'",
     });
   }
+});
+
+app.get('/github/issues', async (req, res, next) => {
+  const params = req.query;
+  const data = await fetch('https://api.github.com/repos/ant-design/ant-design-pro/issues', {
+    params: {
+      ...params,
+      access_token: 'c17b1cb63754f4e97a926950a3eb9a7d10660199',
+      page: params.current,
+      per_page: params.pageSize,
+    },
+  }).then((msg) => msg.json());
+  const totalObj = await fetch(
+    'https://api.github.com/repos/ant-design/ant-design-pro/issues?per_page=1&access_token=c17b1cb63754f4e97a926950a3eb9a7d10660199',
+    {
+      params,
+    }
+  ).then((msg) => msg.json());
+  res.json({
+    data: data.map((item) => ({
+      ...item,
+      state: item.labels.find((tag) => tag.name.includes('Progress')) ? 'processing' : item.state,
+    })),
+    page: params.current,
+    success: true,
+    total: (totalObj[0] || { number: 0 }).number - 56,
+  });
 });
 
 app.listen(process.env.PORT || 80, () => {
