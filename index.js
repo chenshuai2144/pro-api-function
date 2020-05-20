@@ -41,6 +41,11 @@ app.get('/doc/getAvatarList', async (req, res, next) => {
   }
 });
 
+const tagList = ['success', 'processing', 'error', 'default', 'warning'];
+const getTag = () => {
+  return tagList[(Math.random() * 5).toFixed()];
+};
+
 app.get('/github/issues', async (req, res, next) => {
   const params = req.query;
   const data = await fetch('https://api.github.com/repos/ant-design/ant-design-pro/issues', {
@@ -60,6 +65,7 @@ app.get('/github/issues', async (req, res, next) => {
   res.json({
     data: data.map((item) => ({
       ...item,
+      labels: item.labels.map((tag) => ({ ...tag, color: getTag() })),
       state: item.labels.find((tag) => tag.name.includes('Progress')) ? 'processing' : item.state,
     })),
     page: params.current,
