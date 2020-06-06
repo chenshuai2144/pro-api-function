@@ -1,10 +1,10 @@
-(function(global, factory) {
+(function (global, factory) {
   typeof exports === 'object' && typeof module !== 'undefined'
     ? (module.exports = factory(require('mockjs'), require('moment')))
     : typeof define === 'function' && define.amd
     ? define(['mockjs', 'moment'], factory)
     : ((global = global || self), (global.mock = factory(global.mockjs, global.moment)));
-})(this, function(mockjs, moment) {
+})(this, function (mockjs, moment) {
   'use strict';
 
   mockjs = mockjs && mockjs.hasOwnProperty('default') ? mockjs['default'] : mockjs;
@@ -32,13 +32,13 @@
 
       if (typeof Object.getOwnPropertySymbols === 'function') {
         ownKeys = ownKeys.concat(
-          Object.getOwnPropertySymbols(source).filter(function(sym) {
+          Object.getOwnPropertySymbols(source).filter(function (sym) {
             return Object.getOwnPropertyDescriptor(source, sym).enumerable;
           }),
         );
       }
 
-      ownKeys.forEach(function(key) {
+      ownKeys.forEach(function (key) {
         _defineProperty(target, key, source[key]);
       });
     }
@@ -175,7 +175,7 @@
 
     switch (method) {
       case 'delete':
-        result = result.filter(item => item.id !== id);
+        result = result.filter((item) => item.id !== id);
         break;
 
       case 'update':
@@ -559,8 +559,8 @@
     contribute: '贡献',
     hot: '热度',
   };
-  radarOriginData.forEach(item => {
-    Object.keys(item).forEach(key => {
+  radarOriginData.forEach((item) => {
+    Object.keys(item).forEach((key) => {
       if (key !== 'name') {
         radarData.push({
           name: item.name,
@@ -3094,7 +3094,7 @@
    */
 
   function toASCII(input) {
-    return mapDomain(input, function(string) {
+    return mapDomain(input, function (string) {
       return regexNonASCII.test(string) ? 'xn--' + encode(string) : string;
     });
   }
@@ -3113,7 +3113,7 @@
     performance.msNow ||
     performance.oNow ||
     performance.webkitNow ||
-    function() {
+    function () {
       return new Date().getTime();
     }; // generate timestamp or delta
 
@@ -3160,7 +3160,7 @@
 
   var isArray =
     Array.isArray ||
-    function(xs) {
+    function (xs) {
       return Object.prototype.toString.call(xs) === '[object Array]';
     };
 
@@ -3189,11 +3189,11 @@
     }
 
     if (typeof obj === 'object') {
-      return map$1(objectKeys(obj), function(k) {
+      return map$1(objectKeys(obj), function (k) {
         var ks = encodeURIComponent(stringifyPrimitive(k)) + eq;
 
         if (isArray(obj[k])) {
-          return map$1(obj[k], function(v) {
+          return map$1(obj[k], function (v) {
             return ks + encodeURIComponent(stringifyPrimitive(v));
           }).join(sep);
         } else {
@@ -3223,7 +3223,7 @@
 
   var objectKeys =
     Object.keys ||
-    function(obj) {
+    function (obj) {
       var res = [];
 
       for (var key in obj) {
@@ -3356,7 +3356,7 @@
     return u;
   }
 
-  Url.prototype.parse = function(url, parseQueryString, slashesDenoteHost) {
+  Url.prototype.parse = function (url, parseQueryString, slashesDenoteHost) {
     return parse$1(this, url, parseQueryString, slashesDenoteHost);
   };
 
@@ -3661,22 +3661,22 @@
 
     if (hash && hash.charAt(0) !== '#') hash = '#' + hash;
     if (search && search.charAt(0) !== '?') search = '?' + search;
-    pathname = pathname.replace(/[?#]/g, function(match) {
+    pathname = pathname.replace(/[?#]/g, function (match) {
       return encodeURIComponent(match);
     });
     search = search.replace('#', '%23');
     return protocol + host + pathname + search + hash;
   }
 
-  Url.prototype.format = function() {
+  Url.prototype.format = function () {
     return format(this);
   };
 
-  Url.prototype.resolve = function(relative) {
+  Url.prototype.resolve = function (relative) {
     return this.resolveObject(urlParse(relative, false, true)).format();
   };
 
-  Url.prototype.resolveObject = function(relative) {
+  Url.prototype.resolveObject = function (relative) {
     if (isString(relative)) {
       var rel = new Url();
       rel.parse(relative, false, true);
@@ -3949,7 +3949,7 @@
     return result;
   };
 
-  Url.prototype.parseHost = function() {
+  Url.prototype.parseHost = function () {
     return parseHost(this);
   };
 
@@ -3970,136 +3970,151 @@
     if (host) self.hostname = host;
   }
 
-  let tableListDataSource = [];
+  // mock tableListDataSource
+  const genList = (current, pageSize) => {
+    const tableListDataSource = [];
+    for (let i = 0; i < pageSize; i += 1) {
+      const index = (current - 1) * 10 + i;
+      tableListDataSource.push({
+        key: index,
+        disabled: i % 6 === 0,
+        href: 'https://ant.design',
+        avatar: [
+          'https://gw.alipayobjects.com/zos/rmsportal/eeHMaZBwmTvLdIwMfBpg.png',
+          'https://gw.alipayobjects.com/zos/rmsportal/udxAbMEhpwthVVcjLXik.png',
+        ][i % 2],
+        name: `TradeCode ${index}`,
+        owner: '曲丽丽',
+        desc: '这是一段描述',
+        callNo: Math.floor(Math.random() * 1000),
+        status: (Math.floor(Math.random() * 10) % 4) + '',
+        updatedAt: new Date(),
+        createdAt: new Date(),
+        progress: Math.ceil(Math.random() * 100),
+      });
+    }
+    tableListDataSource.reverse();
+    return tableListDataSource;
+  };
 
-  for (let i = 0; i < 46; i += 1) {
-    tableListDataSource.push({
-      key: i,
-      disabled: i % 6 === 0,
-      href: 'https://ant.design',
-      avatar: [
-        'https://gw.alipayobjects.com/zos/rmsportal/eeHMaZBwmTvLdIwMfBpg.png',
-        'https://gw.alipayobjects.com/zos/rmsportal/udxAbMEhpwthVVcjLXik.png',
-      ][i % 2],
-      name: `TradeCode ${i}`,
-      title: `一个任务名称 ${i}`,
-      owner: '曲丽丽',
-      desc: '这是一段描述',
-      callNo: Math.floor(Math.random() * 1000),
-      status: Math.floor(Math.random() * 10) % 4,
-      updatedAt: new Date(`2017-07-${Math.floor(i / 2) + 1}`),
-      createdAt: new Date(`2017-07-${Math.floor(i / 2) + 1}`),
-      progress: Math.ceil(Math.random() * 100),
-    });
-  }
+  let tableListDataSource = genList(1, 100);
 
   function getRule(req, res, u) {
-    let url = u;
-
-    if (!url || Object.prototype.toString.call(url) !== '[object String]') {
-      url = req.url; // eslint-disable-line
+    let realUrl = u;
+    if (!realUrl || Object.prototype.toString.call(realUrl) !== '[object String]') {
+      realUrl = req.url;
     }
-
-    const params = urlParse(url, true).query;
-    let dataSource = tableListDataSource;
-
-    if (params.sorter) {
-      const s = params.sorter.split('_');
+    const { current = 1, pageSize = 10 } = req.query;
+    const params = parse(realUrl, true).query || {};
+    let dataSource = [...tableListDataSource].slice((current - 1) * pageSize, current * pageSize);
+    const sorter = params.sorter && JSON.parse(params.sorter);
+    if (sorter) {
       dataSource = dataSource.sort((prev, next) => {
-        if (s[1] === 'descend') {
-          return next[s[0]] - prev[s[0]];
-        }
-
-        return prev[s[0]] - next[s[0]];
+        let sortNumber = 0;
+        Object.keys(sorter).forEach((key) => {
+          if (sorter[key] === 'descend') {
+            if (prev[key] - next[key] > 0) {
+              sortNumber += -1;
+            } else {
+              sortNumber += 1;
+            }
+            return;
+          }
+          if (prev[key] - next[key] > 0) {
+            sortNumber += 1;
+          } else {
+            sortNumber += -1;
+          }
+        });
+        return sortNumber;
       });
     }
-
-    if (params.status) {
-      const status = params.status.split(',');
-      let filterDataSource = [];
-      status.forEach(s => {
-        filterDataSource = filterDataSource.concat(
-          dataSource.filter(data => parseInt(data.status, 10) === parseInt(s[0], 10)),
-        );
-      });
-      dataSource = filterDataSource;
+    if (params.filter) {
+      const filter = JSON.parse(params.filter);
+      if (Object.keys(filter).length > 0) {
+        dataSource = dataSource.filter((item) => {
+          return Object.keys(filter).some((key) => {
+            if (!filter[key]) {
+              return true;
+            }
+            if (filter[key].includes(`${item[key]}`)) {
+              return true;
+            }
+            return false;
+          });
+        });
+      }
     }
-
     if (params.name) {
-      dataSource = dataSource.filter(data => data.name.indexOf(params.name) > -1);
+      dataSource = dataSource.filter((data) => data.name.includes(params.name || ''));
     }
-
-    let pageSize = 10;
-
-    if (params.pageSize) {
-      pageSize = params.pageSize * 1;
-    }
-
     const result = {
       data: dataSource,
-      total: dataSource.length,
+      total: tableListDataSource.length,
+      success: true,
       pageSize,
-      current: parseInt(params.currentPage, 10) || 1,
+      current: parseInt(`${params.currentPage}`, 10) || 1,
     };
     return res.json(result);
   }
-
   function postRule(req, res, u, b) {
-    let url = u;
-
-    if (!url || Object.prototype.toString.call(url) !== '[object String]') {
-      url = req.url; // eslint-disable-line
+    let realUrl = u;
+    if (!realUrl || Object.prototype.toString.call(realUrl) !== '[object String]') {
+      realUrl = req.url;
     }
-
     const body = (b && b.body) || req.body;
     const { method, name, desc, key } = body;
-
     switch (method) {
       /* eslint no-case-declarations:0 */
       case 'delete':
-        tableListDataSource = tableListDataSource.filter(item => key.indexOf(item.key) === -1);
+        tableListDataSource = tableListDataSource.filter((item) => key.indexOf(item.key) === -1);
         break;
-
       case 'post':
-        const i = Math.ceil(Math.random() * 10000);
-        tableListDataSource.unshift({
-          key: i,
-          href: 'https://ant.design',
-          avatar: [
-            'https://gw.alipayobjects.com/zos/rmsportal/eeHMaZBwmTvLdIwMfBpg.png',
-            'https://gw.alipayobjects.com/zos/rmsportal/udxAbMEhpwthVVcjLXik.png',
-          ][i % 2],
-          name: `TradeCode ${i}`,
-          title: `一个任务名称 ${i}`,
-          owner: '曲丽丽',
-          desc,
-          callNo: Math.floor(Math.random() * 1000),
-          status: Math.floor(Math.random() * 10) % 2,
-          updatedAt: new Date(),
-          createdAt: new Date(),
-          progress: Math.ceil(Math.random() * 100),
-        });
-        break;
-
+        (() => {
+          const i = Math.ceil(Math.random() * 10000);
+          const newRule = {
+            key: tableListDataSource.length,
+            href: 'https://ant.design',
+            avatar: [
+              'https://gw.alipayobjects.com/zos/rmsportal/eeHMaZBwmTvLdIwMfBpg.png',
+              'https://gw.alipayobjects.com/zos/rmsportal/udxAbMEhpwthVVcjLXik.png',
+            ][i % 2],
+            name,
+            owner: '曲丽丽',
+            desc,
+            callNo: Math.floor(Math.random() * 1000),
+            status: (Math.floor(Math.random() * 10) % 2) + '',
+            updatedAt: new Date(),
+            createdAt: new Date(),
+            progress: Math.ceil(Math.random() * 100),
+          };
+          tableListDataSource.unshift(newRule);
+          return res.json(newRule);
+        })();
+        return;
       case 'update':
-        tableListDataSource = tableListDataSource.map(item => {
-          if (item.key === key) {
-            Object.assign(item, {
-              desc,
-              name,
-            });
+        (() => {
+          let newRule = {};
+          tableListDataSource = tableListDataSource.map((item) => {
+            if (item.key === key) {
+              newRule = Object.assign(Object.assign({}, item), { desc, name });
+              return Object.assign(Object.assign({}, item), { desc, name });
+            }
             return item;
-          }
-
-          return item;
-        });
-        break;
-
+          });
+          return res.json(newRule);
+        })();
+        return;
       default:
         break;
     }
-
-    return getRule(req, res, u);
+    const result = {
+      list: tableListDataSource,
+      pagination: {
+        total: tableListDataSource.length,
+      },
+    };
+    res.json(result);
   }
 
   var rule = {
