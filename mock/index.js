@@ -4005,7 +4005,7 @@
       realUrl = req.url;
     }
     const { current = 1, pageSize = 10 } = req.query;
-    const params = parse(realUrl, true).query || {};
+    const params = urlParse(realUrl, true).query || {};
     let dataSource = [...tableListDataSource].slice((current - 1) * pageSize, current * pageSize);
     const sorter = params.sorter && JSON.parse(params.sorter);
     if (sorter) {
@@ -4057,6 +4057,7 @@
     };
     return res.json(result);
   }
+
   function postRule(req, res, u, b) {
     let realUrl = u;
     if (!realUrl || Object.prototype.toString.call(realUrl) !== '[object String]') {
