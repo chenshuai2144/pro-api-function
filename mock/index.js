@@ -3999,14 +3999,13 @@
   let tableListDataSource = genList(1, 100);
 
   function getRule(req, res, u) {
-    tableListDataSource = genList(1, 100);
     let realUrl = u;
     if (!realUrl || Object.prototype.toString.call(realUrl) !== '[object String]') {
       realUrl = req.url;
     }
     const { current = 1, pageSize = 10 } = req.query;
     const params = urlParse(realUrl, true).query || {};
-    let dataSource = [...tableListDataSource].slice((current - 1) * pageSize, current * pageSize);
+    let dataSource = genList(1, 100).slice((current - 1) * pageSize, current * pageSize);
     const sorter = params.sorter && JSON.parse(params.sorter);
     if (sorter) {
       dataSource = dataSource.sort((prev, next) => {
