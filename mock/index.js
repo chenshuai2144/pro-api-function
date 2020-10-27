@@ -1,10 +1,10 @@
-(function (global, factory) {
+(function(global, factory) {
   typeof exports === 'object' && typeof module !== 'undefined'
     ? (module.exports = factory(require('mockjs'), require('moment')))
     : typeof define === 'function' && define.amd
     ? define(['mockjs', 'moment'], factory)
     : ((global = global || self), (global.mock = factory(global.mockjs, global.moment)));
-})(this, function (mockjs, moment) {
+})(this, function(mockjs, moment) {
   'use strict';
 
   mockjs = mockjs && mockjs.hasOwnProperty('default') ? mockjs['default'] : mockjs;
@@ -32,13 +32,13 @@
 
       if (typeof Object.getOwnPropertySymbols === 'function') {
         ownKeys = ownKeys.concat(
-          Object.getOwnPropertySymbols(source).filter(function (sym) {
+          Object.getOwnPropertySymbols(source).filter(function(sym) {
             return Object.getOwnPropertyDescriptor(source, sym).enumerable;
-          }),
+          })
         );
       }
 
-      ownKeys.forEach(function (key) {
+      ownKeys.forEach(function(key) {
         _defineProperty(target, key, source[key]);
       });
     }
@@ -3094,7 +3094,7 @@
    */
 
   function toASCII(input) {
-    return mapDomain(input, function (string) {
+    return mapDomain(input, function(string) {
       return regexNonASCII.test(string) ? 'xn--' + encode(string) : string;
     });
   }
@@ -3113,7 +3113,7 @@
     performance.msNow ||
     performance.oNow ||
     performance.webkitNow ||
-    function () {
+    function() {
       return new Date().getTime();
     }; // generate timestamp or delta
 
@@ -3160,7 +3160,7 @@
 
   var isArray =
     Array.isArray ||
-    function (xs) {
+    function(xs) {
       return Object.prototype.toString.call(xs) === '[object Array]';
     };
 
@@ -3189,11 +3189,11 @@
     }
 
     if (typeof obj === 'object') {
-      return map$1(objectKeys(obj), function (k) {
+      return map$1(objectKeys(obj), function(k) {
         var ks = encodeURIComponent(stringifyPrimitive(k)) + eq;
 
         if (isArray(obj[k])) {
-          return map$1(obj[k], function (v) {
+          return map$1(obj[k], function(v) {
             return ks + encodeURIComponent(stringifyPrimitive(v));
           }).join(sep);
         } else {
@@ -3223,7 +3223,7 @@
 
   var objectKeys =
     Object.keys ||
-    function (obj) {
+    function(obj) {
       var res = [];
 
       for (var key in obj) {
@@ -3356,7 +3356,7 @@
     return u;
   }
 
-  Url.prototype.parse = function (url, parseQueryString, slashesDenoteHost) {
+  Url.prototype.parse = function(url, parseQueryString, slashesDenoteHost) {
     return parse$1(this, url, parseQueryString, slashesDenoteHost);
   };
 
@@ -3661,22 +3661,22 @@
 
     if (hash && hash.charAt(0) !== '#') hash = '#' + hash;
     if (search && search.charAt(0) !== '?') search = '?' + search;
-    pathname = pathname.replace(/[?#]/g, function (match) {
+    pathname = pathname.replace(/[?#]/g, function(match) {
       return encodeURIComponent(match);
     });
     search = search.replace('#', '%23');
     return protocol + host + pathname + search + hash;
   }
 
-  Url.prototype.format = function () {
+  Url.prototype.format = function() {
     return format(this);
   };
 
-  Url.prototype.resolve = function (relative) {
+  Url.prototype.resolve = function(relative) {
     return this.resolveObject(urlParse(relative, false, true)).format();
   };
 
-  Url.prototype.resolveObject = function (relative) {
+  Url.prototype.resolveObject = function(relative) {
     if (isString(relative)) {
       var rel = new Url();
       rel.parse(relative, false, true);
@@ -3949,7 +3949,7 @@
     return result;
   };
 
-  Url.prototype.parseHost = function () {
+  Url.prototype.parseHost = function() {
     return parseHost(this);
   };
 
@@ -3996,10 +3996,10 @@
     tableListDataSource.reverse();
     return tableListDataSource;
   };
-
   let tableListDataSource = genList(1, 100);
 
   function getRule(req, res, u) {
+    tableListDataSource = genList(1, 100);
     let realUrl = u;
     if (!realUrl || Object.prototype.toString.call(realUrl) !== '[object String]') {
       realUrl = req.url;
