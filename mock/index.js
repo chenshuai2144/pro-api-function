@@ -3996,7 +3996,6 @@
     tableListDataSource.reverse();
     return tableListDataSource;
   };
-  let tableListDataSource = genList(1, 100);
 
   function getRule(req, res, u) {
     let realUrl = u;
@@ -4049,7 +4048,7 @@
     }
     const result = {
       data: dataSource,
-      total: tableListDataSource.length,
+      total: 100,
       success: true,
       pageSize,
       current: parseInt(`${params.currentPage}`, 10) || 1,
@@ -4058,6 +4057,7 @@
   }
 
   function postRule(req, res, u, b) {
+    let tableListDataSource = genList(1, 100);
     let realUrl = u;
     if (!realUrl || Object.prototype.toString.call(realUrl) !== '[object String]') {
       realUrl = req.url;
