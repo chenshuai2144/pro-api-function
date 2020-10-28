@@ -41,9 +41,17 @@ app.get('/doc/getAvatarList', async (req, res, next) => {
   }
 });
 
-const tagList = ['success', 'processing', 'error', 'default', 'warning'];
-const getTag = () => {
-  return tagList[(Math.random() * 5).toFixed()];
+const getTag = (name = '') => {
+  if (name.includes('bug')) {
+    return 'error';
+  }
+  if (name.includes('question')) {
+    return 'success';
+  }
+  if (name.includes('Progress')) {
+    return 'processing';
+  }
+  return 'default';
 };
 
 app.get('/github/issues', async (req, res, next) => {
@@ -643,7 +651,7 @@ app.get('/github/issues', async (req, res, next) => {
             node_id: 'MDU6TGFiZWw4MjQ0NjM3Njg=',
             url:
               'https://api.github.com/repos/ant-design/ant-design-pro/labels/%E2%98%BA%EF%B8%8FIn%20Progress',
-            name: '☺️In Progress',
+            name: 'In Progress',
             color: '8BC34A',
             default: false,
             description: '',
@@ -755,7 +763,7 @@ app.get('/github/issues', async (req, res, next) => {
             node_id: 'MDU6TGFiZWw4MjQ0NjM3Njg=',
             url:
               'https://api.github.com/repos/ant-design/ant-design-pro/labels/%E2%98%BA%EF%B8%8FIn%20Progress',
-            name: '☺️In Progress',
+            name: 'In Progress',
             color: '8BC34A',
             default: false,
             description: '',
@@ -1097,12 +1105,28 @@ app.get('/github/issues', async (req, res, next) => {
       },
     ].map((item) => {
       const labels = item.labels
-        ? item.labels.map((tag) => ({ ...tag, color: getTag() })).slice(0, 1)
-        : ['question'];
+        ? item.labels.map((tag) => ({ name: tag.name, color: getTag(tag.name) })).slice(0, 1)
+        : [
+            {
+              name: 'question',
+              color: 'processing',
+            },
+          ];
+
+      delete item.assignees;
+      delete item.assignee;
+      delete item.milestone;
+      delete item.events_url;
+      delete item.repository_url;
+      delete item.labels_url;
+      delete item.comments_url;
+      delete item.node_id;
+      delete item.html_url;
+
       return {
         ...item,
         labels,
-        state: labels.find((tag) => tag.name.includes('question')) ? 'processing' : item.state,
+        state: labels.toString().includes('question') ? 'processing' : item.state,
       };
     }),
     page: params.current || 1,
