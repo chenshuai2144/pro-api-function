@@ -63,7 +63,7 @@ app.get('/github/issues', async (req, res, next) => {
         repository_url: 'https://api.github.com/repos/ant-design/ant-design-pro',
         id: 624748504,
         number: 6689,
-        title: '🐛[BUG]yarn install命令 antd2.4.5会报错',
+        title: '🐛 [BUG]yarn install命令 antd2.4.5会报错',
         labels: [
           {
             id: 676362617,
@@ -97,7 +97,7 @@ app.get('/github/issues', async (req, res, next) => {
         id: 624691229,
         node_id: 'MDU6SXNzdWU2MjQ2OTEyMjk=',
         number: 6688,
-        title: '🐛[BUG]无法创建工程npm create umi',
+        title: '🐛 [BUG]无法创建工程npm create umi',
         labels: [
           {
             id: 676362617,
@@ -131,7 +131,7 @@ app.get('/github/issues', async (req, res, next) => {
         id: 624674790,
         node_id: 'MDU6SXNzdWU2MjQ2NzQ3OTA=',
         number: 6685,
-        title: '🧐[问题] build 后还存在 es6 的代码（Umi@2.13.13）',
+        title: '🧐 [问题] build 后还存在 es6 的代码（Umi@2.13.13）',
         labels: [
           {
             id: 676362622,
@@ -235,7 +235,7 @@ app.get('/github/issues', async (req, res, next) => {
         id: 624556297,
         node_id: 'MDU6SXNzdWU2MjQ1NTYyOTc=',
         number: 6680,
-        title: '🐛[BUG]Umi UI 添加多个空白页，就会出错！把空白页都变成选中状态！',
+        title: '🐛 [BUG]Umi UI 添加多个空白页，就会出错！把空白页都变成选中状态！',
         labels: [
           {
             id: 676362617,
@@ -269,7 +269,7 @@ app.get('/github/issues', async (req, res, next) => {
         id: 624415799,
         node_id: 'MDU6SXNzdWU2MjQ0MTU3OTk=',
         number: 6678,
-        title: '🐛[BUG]第一次载入页面，菜单仅图标时，图标没有居中',
+        title: '🐛 [BUG]第一次载入页面，菜单仅图标时，图标没有居中',
         labels: [
           {
             id: 676362617,
@@ -343,7 +343,7 @@ app.get('/github/issues', async (req, res, next) => {
         id: 624130987,
         node_id: 'MDU6SXNzdWU2MjQxMzA5ODc=',
         number: 6674,
-        title: 'V4版本如何使用第三方的enhanceReduxMiddleware 🧐[问题]',
+        title: '🧐 [问题] V4版本如何使用第三方的enhanceReduxMiddleware',
         labels: [
           {
             id: 676362622,
@@ -377,7 +377,7 @@ app.get('/github/issues', async (req, res, next) => {
         node_id: 'MDU6SXNzdWU2MjM2Nzc4MTE=',
         number: 6663,
         title:
-          '🐛[BUG] 官网预览页面，第一次点击二级菜单，其父级菜单会收起，之后再次点击二级菜单，父菜单正常',
+          '🐛 [BUG] 官网预览页面，第一次点击二级菜单，其父级菜单会收起，之后再次点击二级菜单，父菜单正常',
         state: 'open',
         locked: false,
         assignee: null,
@@ -400,7 +400,7 @@ app.get('/github/issues', async (req, res, next) => {
         id: 623565176,
         node_id: 'MDU6SXNzdWU2MjM1NjUxNzY=',
         number: 6662,
-        title: '🧐[问题] 从自建 block 仓库下载区块报错。',
+        title: '🧐 [问题] 从自建 block 仓库下载区块报错。',
         labels: [
           {
             id: 676362622,
@@ -436,7 +436,7 @@ app.get('/github/issues', async (req, res, next) => {
         node_id: 'MDU6SXNzdWU2MjI5MDI0MjA=',
         number: 6652,
         title:
-          '🧐[问题] fetchCurrent接口报错，退出登录页，第一次点击登录，SecurityLayout不渲染，导致需要点击两次',
+          '🧐 [问题] fetchCurrent接口报错，退出登录页，第一次点击登录，SecurityLayout不渲染，导致需要点击两次',
         labels: [
           {
             id: 676362622,
@@ -471,7 +471,7 @@ app.get('/github/issues', async (req, res, next) => {
         id: 622348582,
         node_id: 'MDU6SXNzdWU2MjIzNDg1ODI=',
         number: 6644,
-        title: '🐛[BUG] V5 左侧栏收缩时，点击图标无效。',
+        title: '🐛 [BUG] V5 左侧栏收缩时，点击图标无效。',
         labels: [
           {
             id: 676362617,
@@ -505,7 +505,7 @@ app.get('/github/issues', async (req, res, next) => {
         id: 622326186,
         node_id: 'MDU6SXNzdWU2MjIzMjYxODY=',
         number: 6643,
-        title: '🧐[问题]不知道有没有大佬将这个模板迁移至Electron的例子',
+        title: '🧐 [问题]不知道有没有大佬将这个模板迁移至Electron的例子',
         labels: [
           {
             id: 676362622,
@@ -575,7 +575,8 @@ app.get('/github/issues', async (req, res, next) => {
         id: 622267649,
         node_id: 'MDU6SXNzdWU2MjIyNjc2NDk=',
         number: 6641,
-        title: '🧐[问题]在重新npm install后运行npm start报出一些less找不到，但项目可以正常运行起来',
+        title:
+          '🧐 [问题]在重新npm install后运行npm start报出一些less找不到，但项目可以正常运行起来',
         labels: [
           {
             id: 676362622,
@@ -610,7 +611,7 @@ app.get('/github/issues', async (req, res, next) => {
         id: 622207575,
         node_id: 'MDU6SXNzdWU2MjIyMDc1NzU=',
         number: 6639,
-        title: '🐛[BUG]错误通知：http code 200',
+        title: '🐛 [BUG]错误通知：http code 200',
         labels: [
           {
             id: 676362617,
@@ -644,7 +645,7 @@ app.get('/github/issues', async (req, res, next) => {
         id: 621402301,
         node_id: 'MDU6SXNzdWU2MjE0MDIzMDE=',
         number: 6630,
-        title: '🐛[BUG]线上预览项目好多布局错乱，不知道是antd的锅还是啥原因',
+        title: '🐛 [BUG]线上预览项目好多布局错乱，不知道是antd的锅还是啥原因',
         labels: [
           {
             id: 824463768,
@@ -688,7 +689,7 @@ app.get('/github/issues', async (req, res, next) => {
         id: 621388407,
         node_id: 'MDU6SXNzdWU2MjEzODg0MDc=',
         number: 6629,
-        title: '🐛[BUG] umi 偶尔出现没有导出成员',
+        title: '🐛 [BUG] umi 偶尔出现没有导出成员',
         labels: [
           {
             id: 676362617,
@@ -722,7 +723,7 @@ app.get('/github/issues', async (req, res, next) => {
         id: 620820348,
         node_id: 'MDU6SXNzdWU2MjA4MjAzNDg=',
         number: 6624,
-        title: '🐛[BUG]请问大佬，为什么无论怎么选择，都无法切换成JS语言，怎么下都是TS,求解答',
+        title: '🐛 [BUG]请问大佬，为什么无论怎么选择，都无法切换成JS语言，怎么下都是TS,求解答',
         labels: [
           {
             id: 676362617,
@@ -756,7 +757,7 @@ app.get('/github/issues', async (req, res, next) => {
         id: 620673679,
         node_id: 'MDU6SXNzdWU2MjA2NzM2Nzk=',
         number: 6619,
-        title: '🐛[BUG] protable内存泄漏问题',
+        title: '🐛 [BUG] protable内存泄漏问题',
         labels: [
           {
             id: 824463768,
@@ -836,7 +837,7 @@ app.get('/github/issues', async (req, res, next) => {
         id: 620313393,
         node_id: 'MDU6SXNzdWU2MjAzMTMzOTM=',
         number: 6614,
-        title: '🧐[问题]有人用过在这个上集成IOC吗?',
+        title: '🧐 [问题]有人用过在这个上集成IOC吗?',
         labels: [
           {
             id: 676362622,
@@ -1011,7 +1012,7 @@ app.get('/github/issues', async (req, res, next) => {
         id: 618752606,
         node_id: 'MDU6SXNzdWU2MTg3NTI2MDY=',
         number: 6588,
-        title: '创建项目中途报错🐛[BUG]',
+        title: '创建项目中途报错🐛 [BUG]',
         labels: [
           {
             id: 676362617,
@@ -1045,7 +1046,7 @@ app.get('/github/issues', async (req, res, next) => {
         id: 617300825,
         node_id: 'MDU6SXNzdWU2MTczMDA4MjU=',
         number: 6576,
-        title: 'Umi UI 资产界面没有antd区块🧐[问题]',
+        title: '🧐 [问题] Umi UI 资产界面没有antd区块',
         labels: [
           {
             id: 676362622,
@@ -1121,6 +1122,8 @@ app.get('/github/issues', async (req, res, next) => {
       delete item.labels_url;
       delete item.comments_url;
       delete item.node_id;
+      delete item.url;
+      item.url = item.html_url;
       delete item.html_url;
 
       return {
