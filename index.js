@@ -92,7 +92,7 @@ app.get('/github/issues', async (req, res, next) => {
     data: newData,
     page: params.current || 1,
     success: true,
-    total: newData.length,
+    total: issueData.length,
   });
   next();
 });
