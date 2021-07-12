@@ -3,7 +3,7 @@
 const pathToRegexp = require('path-to-regexp');
 const bodyParser = require('body-parser');
 
-const mockFile = require('./index');
+const mockFile = require('./mock/index');
 
 const BODY_PARSED_METHODS = ['post', 'put', 'patch'];
 
@@ -14,7 +14,7 @@ function parseKey(key) {
   if (key.indexOf(' ') > -1) {
     const spliced = key.split(' ');
     method = spliced[0].toLowerCase();
-    path = spliced[1]; // eslint-disable-line
+    path = spliced[1] || spliced[2]; // eslint-disable-line
   }
   const routerBasePath = `${path}`;
   return {
@@ -50,6 +50,7 @@ function normalizeConfig(config) {
     const { method, path } = parseKey(key);
     const keys = [];
     const re = pathToRegexp(path, keys);
+    console.log(re);
     memo.push({
       method,
       path,
@@ -66,11 +67,11 @@ const mockData = normalizeConfig(mockFile);
 function matchMock(req) {
   const { path: exceptPath } = req;
   const exceptMethod = req.method.toLowerCase();
+
   function decodeParam(val) {
     if (typeof val !== 'string' || val.length === 0) {
       return val;
     }
-
     try {
       return decodeURIComponent(val);
     } catch (err) {
@@ -106,7 +107,9 @@ function matchMock(req) {
     }
   }
 
-  return mockData.filter(({ method, re }) => method === exceptMethod && re.test(exceptPath))[0];
+  return mockData.filter(({ method, re }) => {
+    return method === exceptMethod && re.test(exceptPath);
+  })[0];
 }
 module.exports = (req, res, next) => {
   const match = matchMock(req);
