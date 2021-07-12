@@ -50,7 +50,6 @@ function normalizeConfig(config) {
     const { method, path } = parseKey(key);
     const keys = [];
     const re = pathToRegexp(path, keys);
-    console.log(re);
     memo.push({
       method,
       path,
