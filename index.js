@@ -56,8 +56,12 @@ const getTag = (name = '') => {
 
 app.get('/github/issues', async (req, res, next) => {
   const params = req.query;
+
   const newData = issueData
-    .slice(((params.current || 1) - 1) * (params.pageSize || 20), params.pageSize || 20)
+    .slice(
+      ((parseInt(params.current) || 1) - 1) * (parseInt(params.pageSize) || 20),
+      parseInt(params.current) * parseInt(params.pageSize) || 20
+    )
     .map((item) => {
       const labels = item.labels
         ? item.labels.map((tag) => ({ name: tag.name, color: getTag(tag.name) })).slice(0, 1)
@@ -90,7 +94,7 @@ app.get('/github/issues', async (req, res, next) => {
     });
   res.json({
     data: newData,
-    page: params.current || 1,
+    page: parseInt(params.current) || 1,
     success: true,
     total: issueData.length,
   });

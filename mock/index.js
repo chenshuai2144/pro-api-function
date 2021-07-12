@@ -1,10 +1,10 @@
-(function(global, factory) {
+(function (global, factory) {
   typeof exports === 'object' && typeof module !== 'undefined'
     ? (module.exports = factory(require('mockjs'), require('moment')))
     : typeof define === 'function' && define.amd
     ? define(['mockjs', 'moment'], factory)
     : ((global = global || self), (global.mock = factory(global.mockjs, global.moment)));
-})(this, function(mockjs, moment) {
+})(this, function (mockjs, moment) {
   'use strict';
 
   mockjs = mockjs && mockjs.hasOwnProperty('default') ? mockjs['default'] : mockjs;
@@ -32,13 +32,13 @@
 
       if (typeof Object.getOwnPropertySymbols === 'function') {
         ownKeys = ownKeys.concat(
-          Object.getOwnPropertySymbols(source).filter(function(sym) {
+          Object.getOwnPropertySymbols(source).filter(function (sym) {
             return Object.getOwnPropertyDescriptor(source, sym).enumerable;
           })
         );
       }
 
-      ownKeys.forEach(function(key) {
+      ownKeys.forEach(function (key) {
         _defineProperty(target, key, source[key]);
       });
     }
@@ -582,26 +582,52 @@
     salesTypeDataOffline,
     radarData,
   };
+
+  const fakeChartData = (_, res) => {
+    return res.json({
+      data: getFakeChartData,
+    });
+  };
+
+  const getChartData = (_, res) => {
+    res.json({
+      data: {
+        visitData,
+        visitData2,
+        salesData,
+        searchData,
+        offlineData,
+        offlineChartData,
+        salesTypeData,
+        salesTypeDataOnline,
+        salesTypeDataOffline,
+        radarData,
+      },
+    });
+  };
+
   var chart = {
+    'GET /api/fake_workplace_chart_data': getChartData,
     'GET /api/fake_chart_data': getFakeChartData,
+    'GET /api/fake_analysis_chart_data': fakeChartData,
   };
 
   var city = {
-    '110000': [
+    110000: [
       {
         province: '北京市',
         name: '市辖区',
         id: '110100',
       },
     ],
-    '120000': [
+    120000: [
       {
         province: '天津市',
         name: '市辖区',
         id: '120100',
       },
     ],
-    '130000': [
+    130000: [
       {
         province: '河北省',
         name: '石家庄市',
@@ -663,7 +689,7 @@
         id: '139000',
       },
     ],
-    '140000': [
+    140000: [
       {
         province: '山西省',
         name: '太原市',
@@ -720,7 +746,7 @@
         id: '141100',
       },
     ],
-    '150000': [
+    150000: [
       {
         province: '内蒙古自治区',
         name: '呼和浩特市',
@@ -782,7 +808,7 @@
         id: '152900',
       },
     ],
-    '210000': [
+    210000: [
       {
         province: '辽宁省',
         name: '沈阳市',
@@ -854,7 +880,7 @@
         id: '211400',
       },
     ],
-    '220000': [
+    220000: [
       {
         province: '吉林省',
         name: '长春市',
@@ -901,7 +927,7 @@
         id: '222400',
       },
     ],
-    '230000': [
+    230000: [
       {
         province: '黑龙江省',
         name: '哈尔滨市',
@@ -968,14 +994,14 @@
         id: '232700',
       },
     ],
-    '310000': [
+    310000: [
       {
         province: '上海市',
         name: '市辖区',
         id: '310100',
       },
     ],
-    '320000': [
+    320000: [
       {
         province: '江苏省',
         name: '南京市',
@@ -1042,7 +1068,7 @@
         id: '321300',
       },
     ],
-    '330000': [
+    330000: [
       {
         province: '浙江省',
         name: '杭州市',
@@ -1099,7 +1125,7 @@
         id: '331100',
       },
     ],
-    '340000': [
+    340000: [
       {
         province: '安徽省',
         name: '合肥市',
@@ -1181,7 +1207,7 @@
         id: '341800',
       },
     ],
-    '350000': [
+    350000: [
       {
         province: '福建省',
         name: '福州市',
@@ -1228,7 +1254,7 @@
         id: '350900',
       },
     ],
-    '360000': [
+    360000: [
       {
         province: '江西省',
         name: '南昌市',
@@ -1285,7 +1311,7 @@
         id: '361100',
       },
     ],
-    '370000': [
+    370000: [
       {
         province: '山东省',
         name: '济南市',
@@ -1372,7 +1398,7 @@
         id: '371700',
       },
     ],
-    '410000': [
+    410000: [
       {
         province: '河南省',
         name: '郑州市',
@@ -1464,7 +1490,7 @@
         id: '419000',
       },
     ],
-    '420000': [
+    420000: [
       {
         province: '湖北省',
         name: '武汉市',
@@ -1536,7 +1562,7 @@
         id: '429000',
       },
     ],
-    '430000': [
+    430000: [
       {
         province: '湖南省',
         name: '长沙市',
@@ -1608,7 +1634,7 @@
         id: '433100',
       },
     ],
-    '440000': [
+    440000: [
       {
         province: '广东省',
         name: '广州市',
@@ -1715,7 +1741,7 @@
         id: '445300',
       },
     ],
-    '450000': [
+    450000: [
       {
         province: '广西壮族自治区',
         name: '南宁市',
@@ -1787,7 +1813,7 @@
         id: '451400',
       },
     ],
-    '460000': [
+    460000: [
       {
         province: '海南省',
         name: '海口市',
@@ -1814,7 +1840,7 @@
         id: '469000',
       },
     ],
-    '500000': [
+    500000: [
       {
         province: '重庆市',
         name: '市辖区',
@@ -1826,7 +1852,7 @@
         id: '500200',
       },
     ],
-    '510000': [
+    510000: [
       {
         province: '四川省',
         name: '成都市',
@@ -1933,7 +1959,7 @@
         id: '513400',
       },
     ],
-    '520000': [
+    520000: [
       {
         province: '贵州省',
         name: '贵阳市',
@@ -1980,7 +2006,7 @@
         id: '522700',
       },
     ],
-    '530000': [
+    530000: [
       {
         province: '云南省',
         name: '昆明市',
@@ -2062,7 +2088,7 @@
         id: '533400',
       },
     ],
-    '540000': [
+    540000: [
       {
         province: '西藏自治区',
         name: '拉萨市',
@@ -2099,7 +2125,7 @@
         id: '542500',
       },
     ],
-    '610000': [
+    610000: [
       {
         province: '陕西省',
         name: '西安市',
@@ -2151,7 +2177,7 @@
         id: '611000',
       },
     ],
-    '620000': [
+    620000: [
       {
         province: '甘肃省',
         name: '兰州市',
@@ -2223,7 +2249,7 @@
         id: '623000',
       },
     ],
-    '630000': [
+    630000: [
       {
         province: '青海省',
         name: '西宁市',
@@ -2265,7 +2291,7 @@
         id: '632800',
       },
     ],
-    '640000': [
+    640000: [
       {
         province: '宁夏回族自治区',
         name: '银川市',
@@ -2292,7 +2318,7 @@
         id: '640500',
       },
     ],
-    '650000': [
+    650000: [
       {
         province: '新疆维吾尔自治区',
         name: '乌鲁木齐市',
@@ -3094,7 +3120,7 @@
    */
 
   function toASCII(input) {
-    return mapDomain(input, function(string) {
+    return mapDomain(input, function (string) {
       return regexNonASCII.test(string) ? 'xn--' + encode(string) : string;
     });
   }
@@ -3113,7 +3139,7 @@
     performance.msNow ||
     performance.oNow ||
     performance.webkitNow ||
-    function() {
+    function () {
       return new Date().getTime();
     }; // generate timestamp or delta
 
@@ -3160,7 +3186,7 @@
 
   var isArray =
     Array.isArray ||
-    function(xs) {
+    function (xs) {
       return Object.prototype.toString.call(xs) === '[object Array]';
     };
 
@@ -3189,11 +3215,11 @@
     }
 
     if (typeof obj === 'object') {
-      return map$1(objectKeys(obj), function(k) {
+      return map$1(objectKeys(obj), function (k) {
         var ks = encodeURIComponent(stringifyPrimitive(k)) + eq;
 
         if (isArray(obj[k])) {
-          return map$1(obj[k], function(v) {
+          return map$1(obj[k], function (v) {
             return ks + encodeURIComponent(stringifyPrimitive(v));
           }).join(sep);
         } else {
@@ -3223,7 +3249,7 @@
 
   var objectKeys =
     Object.keys ||
-    function(obj) {
+    function (obj) {
       var res = [];
 
       for (var key in obj) {
@@ -3356,7 +3382,7 @@
     return u;
   }
 
-  Url.prototype.parse = function(url, parseQueryString, slashesDenoteHost) {
+  Url.prototype.parse = function (url, parseQueryString, slashesDenoteHost) {
     return parse$1(this, url, parseQueryString, slashesDenoteHost);
   };
 
@@ -3661,22 +3687,22 @@
 
     if (hash && hash.charAt(0) !== '#') hash = '#' + hash;
     if (search && search.charAt(0) !== '?') search = '?' + search;
-    pathname = pathname.replace(/[?#]/g, function(match) {
+    pathname = pathname.replace(/[?#]/g, function (match) {
       return encodeURIComponent(match);
     });
     search = search.replace('#', '%23');
     return protocol + host + pathname + search + hash;
   }
 
-  Url.prototype.format = function() {
+  Url.prototype.format = function () {
     return format(this);
   };
 
-  Url.prototype.resolve = function(relative) {
+  Url.prototype.resolve = function (relative) {
     return this.resolveObject(urlParse(relative, false, true)).format();
   };
 
-  Url.prototype.resolveObject = function(relative) {
+  Url.prototype.resolveObject = function (relative) {
     if (isString(relative)) {
       var rel = new Url();
       rel.parse(relative, false, true);
@@ -3949,7 +3975,7 @@
     return result;
   };
 
-  Url.prototype.parseHost = function() {
+  Url.prototype.parseHost = function () {
     return parseHost(this);
   };
 
